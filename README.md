@@ -1,7 +1,9 @@
 # Clipboard
-A simple Golang library for reading and writing the clipboard in Linux.
+Simple Golang libraries for reading and writing text to/from the clipboard in Linux.
 
-The only dependency is [`xclip`](https://github.com/astrand/xclip), which is likely already installed on a Linux system.
+Libraries for both [`xclip`](https://github.com/astrand/xclip) and [`xsel`](https://github.com/kfish/xsel) are included in separate packages. See the section below and installation and use.
+
+As such, the only dependency for each package is its respective clipboard service (`xclip` or `xsel`).
 
 ## Use
 Import the library:

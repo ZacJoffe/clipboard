@@ -2,7 +2,8 @@ package main
 
 import (
 	//"github.com/ZacJoffe/clipboard/xclip"
-	//"./xclip"
+	//"github.com/ZacJoffe/clipboard/xsel"
+
 	"./xsel"
 	"fmt"
 	"log"
