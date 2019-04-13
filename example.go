@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	err := xclip.Write("test")
+	err := xclip.Write("Writing to the clipboard!!!")
 	if err != nil {
 		log.Fatal(err)
 	}
