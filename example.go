@@ -1,24 +1,33 @@
 package main
 
 import (
-	//"github.com/ZacJoffe/clipboard/xclip"
-	//"github.com/ZacJoffe/clipboard/xsel"
+	"github.com/ZacJoffe/clipboard/xclip"
+	"github.com/ZacJoffe/clipboard/xsel"
 
-	"./xsel"
 	"fmt"
 	"log"
 )
 
 func main() {
-	err := xsel.Write("Writing to the clipboard!!!")
+	err := xclip.Write("Writing to the clipboard using xclip!")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	out, err := xsel.Read()
+	out, err := xclip.Read()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(out)
+
+	err = xsel.Write("Writing to the clipboard using xsel!")
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	out, err = xsel.Read()
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Println(out)
 }

@@ -5,14 +5,27 @@ Libraries for both [`xclip`](https://github.com/astrand/xclip) and [`xsel`](http
 
 As such, the only dependency for each package is its respective clipboard service (`xclip` or `xsel`).
 
-## Use
-Import the library:
+Note that both libraries have the exact same functionality, just using two different backends.
+
+## Installation and Use
+Install the library you choose to use. For `xclip`:
+```
+go get -u github.com/ZacJoffe/clipboard/xclip
+```
+
+For `xsel`:
+```
+go get -u github.com/ZacJoffe/clipboard/xsel
+```
+
+Then import either of the libraries of your choice in your code:
 ```
 import(
     "github.com/ZacJoffe/clipboard/xclip"
+    "github.com/ZacJoffe/clipboard/xsel"
 )
 ```
 
-Use the `xclip.Read` and `xclip.Write` functions to read and write to/from the clipboard.
+Use the `Read` and `Write` functions to read and write text to/from the clipboard.
 
 See `example.go` in the root folder for actual use.
