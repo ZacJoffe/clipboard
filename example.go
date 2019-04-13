@@ -1,7 +1,8 @@
 package main
 
 import (
-	"./xclip"
+	"github.com/ZacJoffe/clipboard/xclip"
+	//"./xclip"
 	"fmt"
 	"log"
 )
