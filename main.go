@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os/exec"
 )
@@ -14,13 +15,28 @@ func checkCommand(command string) error {
 	return nil
 }
 
+func Read() (string, error) {
+	err := checkCommand("xclip")
+	if err != nil {
+		return "", err
+	}
+
+	cmd := exec.Command("xclip", "-out", "-selection", "clipboard")
+	out, err := cmd.Output()
+	if err != nil {
+		return "", err
+	}
+
+	return string(out), nil
+}
+
 func Write(text string) error {
 	err := checkCommand("xclip")
 	if err != nil {
 		return err
 	}
 
-	cmd := exec.Command("xclip", "-selection", "clipboard")
+	cmd := exec.Command("xclip", "-in", "-selection", "clipboard")
 
 	in, err := cmd.StdinPipe()
 	if err != nil {
@@ -51,8 +67,15 @@ func Write(text string) error {
 }
 
 func main() {
-	err := Write("dawdawdwafajfghkadsjklhfgasldjkghlasjkdh")
+	err := Write("test")
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	out, err := Read()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(out)
 }
