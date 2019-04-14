@@ -33,7 +33,7 @@ func Read() (string, error) {
 	return string(out), nil
 }
 
-func Write(text string) error {
+func WriteText(text string) error {
 	// check to see if xsel exists
 	err := checkCommand("xsel")
 	if err != nil {
