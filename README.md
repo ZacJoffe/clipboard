@@ -20,7 +20,7 @@ go get -u github.com/ZacJoffe/clipboard/xsel
 
 Then import either of the libraries of your choice in your code:
 ```
-import(
+import (
     "github.com/ZacJoffe/clipboard/xclip"
     "github.com/ZacJoffe/clipboard/xsel"
 )

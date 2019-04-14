@@ -6,7 +6,7 @@ import (
 
 // checkCommand looks sees is a given command exists on the user's system, if the returned error is nil then it exists
 func checkCommand(command string) error {
-	_, err := exec.LookPath("xclip")
+	_, err := exec.LookPath(command)
 	if err != nil {
 		return err
 	}
