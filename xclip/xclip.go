@@ -1,6 +1,7 @@
 package xclip
 
 import (
+	"os"
 	"os/exec"
 )
 
@@ -33,8 +34,8 @@ func Read() (string, error) {
 	return string(out), nil
 }
 
-// Write writes a given string to the clipboard
-func Write(text string) error {
+// WriteText writes a given string to the clipboard
+func WriteText(text string) error {
 	// check to see if xclip exists
 	err := checkCommand("xclip")
 	if err != nil {
@@ -70,4 +71,20 @@ func Write(text string) error {
 
 	// wait for command to exit and stdin copying - will return nil if successful
 	return cmd.Wait()
+}
+
+// WriteImage writes a given file image to the clipboard
+func WriteImage(image *os.File) error {
+	// check to see if xclip exists
+	err := checkCommand("xclip")
+	if err != nil {
+		return err
+	}
+
+	// create the command "xclip -in -selection clipboard -t image/png /path/to/image.png"
+	// NOTE: image.Name() is the path to the file
+	cmd := exec.Command("xclip", "-in", "-selection", "clipboard", "-t", "image/png", image.Name())
+
+	// run the command, returns nil if successful
+	return cmd.Run()
 }
