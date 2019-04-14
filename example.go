@@ -6,6 +6,7 @@ import (
 
 	"fmt"
 	"log"
+	"os"
 )
 
 func main() {
@@ -30,4 +31,15 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println(out)
+
+	image, err := os.Open("/tmp/screenshot.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = xclip.WriteImage(image)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Wrote image to clipboard using xclip!")
 }

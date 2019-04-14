@@ -5,10 +5,10 @@ Libraries for both [`xclip`](https://github.com/astrand/xclip) and [`xsel`](http
 
 As such, the only dependency for each package is its respective clipboard service (`xclip` or `xsel`).
 
-Note that both libraries have the exact same functionality, just using two different backends.
+The library for `xclip` can also be used to copy images to the clipboard.
 
 ## Installation and Use
-Install the library you choose to use. For `xclip`:
+Install the library of your choise. For `xclip`:
 ```
 go get -u github.com/ZacJoffe/clipboard/xclip
 ```
@@ -26,6 +26,8 @@ import (
 )
 ```
 
-Use the `Read` and `Write` functions to read and write text to/from the clipboard.
+Use the `Read` and `WriteText` functions to read and write text to/from the clipboard.
+
+For xclip, use the `WriteImage` function to copy an image file to the clipboard.
 
 See `example.go` in the root folder for actual use.
